@@ -11,16 +11,18 @@
 - Liquid
 - Mongoose
 ___
-### **SOURCES**
-Pollen Count
-
-https://docs.breezometer.com/api-documentation/pollen-api/v2/
-
+### **API SOURCES**
 Air Quality & Weather Data
 
 https://www.iqair.com/air-pollution-data-api
 
-Health Data 
+*STRETCH GOALS*
+
+*Pollen Count*
+
+https://docs.breezometer.com/api-documentation/pollen-api/v2/
+
+*Health/ COVID Data* 
 
 https://data.cms.gov/provider-data/
 ___
