@@ -31,18 +31,22 @@ ___
 ### **GOAL STATEMENT**
 
 The “Is it safe to go Outside” app allows the users to search the air quality, UV index and Covid/ Influenza cases, which will allow users to take more control of how they interact with the enviroment and public. We will measure effectiveness by allowing users to comment by zip code of any environmental implications that could affect someone with health issues.
-___
-### **USER JOURNEY**
 
-![wire journey](readme-images/userjourney.jpg)
+___
+### **ENTITY-RELATIONSHIP DIAGRAM**
+
+![models](readme-images/erd.jpg)
+
 ___
 ### **WIREFRAMES**
 
 ![wire frames](readme-images/wireframes.jpg)
-___
-### **ERD - Models**
 
-![models](readme-images/erd.jpg)
+___
+### **USER JOURNEY**
+
+![wire journey](readme-images/userjourney.jpg)
+
 
 
 
