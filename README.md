@@ -30,7 +30,7 @@ As a user who is immunocompromised, I want access to my local enviromental condi
 ___
 ### **GOAL STATEMENT**
 
-Our “Is it safe to go Outside” app allows the users to search the air quality, UV index and Covid/ Influenza cases, which will allow users to take more control of how they interact with the enviroment and public. We will measure effectiveness by allowing users to comment by zip code of any environmental implications that could affect someone with health issues.
+The “Is it safe to go Outside” app allows the users to search the air quality, UV index and Covid/ Influenza cases, which will allow users to take more control of how they interact with the enviroment and public. We will measure effectiveness by allowing users to comment by zip code of any environmental implications that could affect someone with health issues.
 ___
 ### **USER JOURNEY**
 
