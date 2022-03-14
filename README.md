@@ -22,9 +22,9 @@ https://www.iqair.com/air-pollution-data-api
 
 https://docs.breezometer.com/api-documentation/pollen-api/v2/
 
-*Health/ COVID Data* 
+*Disease/ COVID Data* 
 
-https://data.cms.gov/provider-data/
+https://disease.sh/
 ___
 ### **USER STORY**
 
