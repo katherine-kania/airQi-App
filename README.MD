@@ -12,19 +12,14 @@
 - Mongoose
 ___
 ### **API SOURCES**
-Air Quality & Weather Data
+Weather API
 
-https://www.iqair.com/air-pollution-data-api
+https://www.weatherapi.com/docs/
 
-*STRETCH GOALS*
-
-*Pollen Count*
+Pollen Count
 
 https://docs.breezometer.com/api-documentation/pollen-api/v2/
 
-*Disease/ COVID Data* 
-
-https://disease.sh/
 ___
 ### **USER STORY**
 
@@ -32,7 +27,7 @@ As a user who is immunocompromised, I want access to my local enviromental condi
 ___
 ### **GOAL STATEMENT**
 
-The “Is it safe to go Outside” app allows the users to search the air quality, UV index and Covid/ Influenza cases, which will allow users to take more control of how they interact with the enviroment and public. We will measure effectiveness by allowing users to comment by zip code of any environmental implications that could affect someone with health issues.
+The “Is it safe to go Outside” app allows the users to search the air quality, UV index and pollen counts, which will allow users to take more control of how they interact with the enviroment and public. We will measure effectiveness by allowing users to comment by zip code of any environmental implications that could affect someone with health issues.
 
 ___
 ### **ENTITY-RELATIONSHIP DIAGRAM**
@@ -44,10 +39,12 @@ ___
 
 ![wire frames](readme-images/wireframes.jpg)
 
-___
-### **USER JOURNEY**
+### **STRETCH GOALS**
 
-![wire journey](readme-images/userjourney.jpg)
+Influenza/ covid cases
+https://disease.sh/
+
+Comment model - Users can give their input on the current conditions in their location. 
 
 
 
