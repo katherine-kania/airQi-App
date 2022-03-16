@@ -1,7 +1,7 @@
 // Import Dependencies
 const express = require('express')
 const Place = require('../models/place')
-const fetch = require("node-fetch")
+const axios = require('axios')
 
 // Create router
 const router = express.Router()
@@ -61,8 +61,8 @@ router.post('/location', (req, res) => {
 	// req.body.ready = req.body.ready === 'on' ? true : false
 
 	// req.body.owner = req.session.userId
-	const location = req.body.zip
-	console.log('this is the location', location)
+	const location = req.body.location
+	// console.log('this is the location', location)
 	res.redirect(`/places/${location}`)
 })
 
@@ -97,19 +97,18 @@ router.post('/location', (req, res) => {
 // displays the location air quality data
 router.get('/:location', (req, res) => {
 	const location = req.params.location
-	console.log('this is the location', location)
+	// console.log('this is the location', req.params.location)
 	
-	fetch(
+	axios.get(
         `https://api.weatherapi.com/v1/current.json?key=68678de3a6f948dab14210014221403&q=${location}&aqi=yes&alerts=yes`
     )
-    .then((response) => response.json())
+    // .then((response) => response.json())
     .then((data) => {
-        console.log('this is the air data', data)
-        const locAir = data
-        
-        res.render('places/show', { locAir })
+        // console.log('this is the air data', data)
+		const air = data
+        res.render('places/show', { air })
        
-        console.log(data)
+        console.log('this is the data', air)
     })
 	.catch((error) => {
 		res.redirect(`/error?error=${error}`)

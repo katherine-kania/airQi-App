@@ -7,6 +7,7 @@ const middleware = require('./utils/middleware')
 const PlaceRouter = require('./controllers/place')
 const UserRouter = require('./controllers/user')
 const User = require("./models/user")
+
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
 // user and resource routes linked in ./utils/middleware.js
 

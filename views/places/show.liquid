@@ -1,20 +1,91 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-md">
+    
     <article>
-        <h2>
-            {{ location.name }}
-        </h2>
-        <!-- <h3>Amount: {{ place.amount }}</h3>
-        <h6>Body: {{ place.body }}</h6>
-        {% if place.owner == userId %}
-        <div class="btn-group">
+        <h3>The air quality in 
+            <strong>
+                {{ air.data.location.name}}, {{ air.data.location.region}}
+            </strong> is
+        </h3>
+        <div>
+            {% if air.data.current.air_quality.us-epa-index == 1 %}
+                <h4 style="color: rgb(154, 249, 12)">
+                    Good
+                </h4>
+                <div style="color: rgb(121, 198, 5")> 
+                    Air quality is satisfactory, and air pollution poses little or no risk.
+                </div>
+            {% endif %}
 
-            <a href="/places/{{ place.id }}/edit" class="btn btn-primary">Edit</a>
-            <form action="/places/{{ place.id }}?_method=DELETE" method="POST">
-                <input type="submit" value="Delete" class="btn btn-danger">
-            </form> -->
+            {% if air.data.current.air_quality.us-epa-index == 2 %}
+                <h4 style="color: yellow">
+                    Moderate
+                </h4>
+                <div style="color: rgb(220, 220, 22)">
+                    Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution.
+                </div>
+            {% endif %}
+
+            {% if air.data.current.air_quality.us-epa-index == 3 %}
+                <h4 style="color: orange">
+                    Unhealthy for Sensitive Groups
+                </h4>
+                <div style="color: rgb(206, 135, 2)">
+                    Members of sensitive groups may experience health effects. The general public is less likely to be affected.
+                </div>
+            {% endif %}
+
+            {% if air.data.current.air_quality.us-epa-index == 4 %}
+            <h4 style="color: red">
+                Unhealthy
+            </h4>
+            <div style="color: rgb(172, 2, 2)">
+                Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects.
+            </div>
+            {% endif %}
+
+            {% if air.data.current.air_quality.us-epa-index == 5 %}
+            <h4 style="color: purple">
+                Veary Unhealthy
+            </h4>
+            <div style="color: rgb(96, 2, 96)">
+                Health alert: The risk of health effects is increased for everyone.
+            </div>
+            {% endif %}
+
+            {% if air.data.current.air_quality.us-epa-index == 5 %}
+            <h4 style="color: maroon">
+                Veary Unhealthy
+            </h4>
+            <div style="color: rgb(63, 1, 1)">
+                Health warning of emergency conditions: everyone is more likely to be affected.
+            </div>
+            {% endif %}
+            
         </div>
+        <div>
+            Last Updated On: {{ air.data.current.last_updated}}</br>
+            Local Time: {{ air.data.location.localtime}}
+        </div>
+        <div>
+            Factors:
+            <ul>
+                <li>Carbon Monoxide (μg/m3): {{ air.data.current.air_quality.co | round}}</li>
+                <li>Ozone (μg/m3): {{ air.data.current.air_quality.o3 | round}}</li>
+                <li>Nitrogen dioxide (μg/m3): {{ air.data.current.air_quality.no2 | round}}</li>
+                <li>Sulphur dioxide (μg/m3): {{ air.data.current.air_quality.so2 | round}}</li>
+                <li>PM2.5 (μg/m3): {{ air.data.current.air_quality.pm2_5 | round}}</li>
+                <li>PM10 (μg/m3): {{ air.data.current.air_quality.pm10 | round}}</li>
+                <li>US EPA standard: {{ air.data.current.air_quality.us-epa-index}}</li>
+                <li>UK Defra Index: {{ air.data.current.air_quality.gb-defra-index}}</li>
+            </ul>
+        </div>
+        
+
+        </div>
+
     </article>
+    
 </div>
 {% endblock %}
