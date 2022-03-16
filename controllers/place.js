@@ -40,9 +40,10 @@ router.get('/', (req, res) => {
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
+	console.log('this is the place saved', location)
 	Place.find({ owner: userId })
-		.then(places => {
-			res.render('places/index', { places, username, loggedIn })
+		.then(location => {
+			res.render('places/mine', { location, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -58,9 +59,9 @@ router.get('/newsearch', (req, res) => {
 // create -> POST route that actually calls the db and makes a new document
 // embeds the location search and redirects to places/:location
 router.post('/location', (req, res) => {
-	// req.body.ready = req.body.ready === 'on' ? true : false
+	req.body.ready = req.body.ready === 'on' ? true : false
 
-	// req.body.owner = req.session.userId
+	req.body.owner = req.session.userId
 	const location = req.body.location
 	// console.log('this is the location', location)
 	res.redirect(`/places/${location}`)

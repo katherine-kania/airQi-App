@@ -81,11 +81,15 @@
                 <li>UK Defra Index: {{ air.data.current.air_quality.gb-defra-index}}</li>
             </ul>
         </div>
-        
-
-        </div>
-
     </article>
-    
+    <form action="/places/mine" method="POST">
+        <input type="submit" value="Add {{air.data.location.name}} to My Places" class="btn btn-success">
+    </form>    
+
+
+    <div class="">
+        <a href="/places/newsearch" class="btn btn-success">Start a New Search</a>
+    </div>   
+   
 </div>
 {% endblock %}
