@@ -1,37 +1,27 @@
 {% layout 'layout.liquid' %}
+{% render './navbar.liquid', loggedIn: loggedIn, username: username, userId: userId %}
+
 {% block content %}
 <div class="container-sm">
-    <form action="/places" method="POST">
+    <form action="/places/location" method="POST">
         <fieldset>
-            <legend>Create New Place</legend>
-            <label class="form-label">Title: </label>
+            <legend>I would like to see the air quality in</legend>
+            <!-- <label class="form-label">Title: </label> -->
             <input 
                 type="text" 
-                name="title" 
-                placeholder="enter place title"
+                name="location" 
+                placeholder="enter your city"
                 class="form-control"
             >
-            <label class="form-label">Body:</label>
+            <!-- <label class="form-label">I'm interested in</label>
             <input 
-                type="text" 
+                type="checkbox" 
                 name="body" 
                 placeholder="enter place body" 
                 class="form-control"
-            >
-            <label class="form-label">Amount:</label>
-            <input 
-                type="number" 
-                name="amount" 
-                class="form-control"
-            >
-            <label class="form-label">Ready:</label>
-            <input 
-                type="checkbox" 
-                name="ready" 
-                class="form-check-input"
-            >
+            >     -->
         </fieldset>
-        <input type="submit" value="Create New Place" class="btn btn-success">
+        <input type="submit" value="Search" class="btn btn-success">
     </form>
 </div>
 {% endblock %}

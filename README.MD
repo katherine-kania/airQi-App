@@ -1,4 +1,4 @@
-# "Is it safe to go outside?"
+# airQI
 
 *Project #2 / Full-stack Application*
 
@@ -27,7 +27,7 @@ As a user who is immunocompromised, I want access to my local enviromental condi
 ___
 ### **GOAL STATEMENT**
 
-The “Is it safe to go Outside” app allows the users to search the air quality, UV index and pollen counts, which will allow users to take more control of how they interact with the enviroment and public. We will measure effectiveness by allowing users to comment by zip code of any environmental implications that could affect someone with health issues.
+The “Is it safe to go Outside” app allows the users to search the air quality, ozone and pollen counts, which will allow users to take more control of how they interact with the enviroment and public. We will measure effectiveness by allowing users to comment by zip code of any environmental implications that could affect someone with health issues.
 
 ___
 ### **ENTITY-RELATIONSHIP DIAGRAM**
@@ -40,9 +40,6 @@ ___
 ![wire frames](readme-images/wireframes.jpg)
 
 ### **STRETCH GOALS**
-
-Influenza/ covid cases
-https://disease.sh/
 
 Comment model - Users can give their input on the current conditions in their location. 
 

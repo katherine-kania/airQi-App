@@ -7,12 +7,24 @@ const User = require('./user')
 // destructure the schema and model constructors from mongoose
 const { Schema, model } = mongoose
 
-const placeSchema = new Schema(
+const PlaceSchema = new Schema(
 	{
-		title: { type: String, required: true },
-		body: { type: String, required: true },
-        amount: { type: Number, required: true },
-		ready: { type: Boolean, required: true },
+		city: { 
+			type: String, 
+			required: true 
+		},
+		state: { 
+			type: String, 
+			required: true 
+		},
+        lat: { 
+			type: Number, 
+			required: true 
+		},
+		lon: { 
+			type: Number, 
+			required: true 
+		},
 		owner: {
 			type: Schema.Types.ObjectID,
 			ref: 'User',
@@ -21,7 +33,7 @@ const placeSchema = new Schema(
 	{ timestamps: true }
 )
 
-const Place = model('Place', placeSchema)
+const Place = model('Place', PlaceSchema)
 
 /////////////////////////////////
 // Export our Model

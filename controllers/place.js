@@ -1,6 +1,7 @@
 // Import Dependencies
 const express = require('express')
 const Place = require('../models/place')
+const fetch = require("node-fetch")
 
 // Create router
 const router = express.Router()
@@ -49,64 +50,70 @@ router.get('/mine', (req, res) => {
 })
 
 // new route -> GET route that renders our page with the form
-router.get('/new', (req, res) => {
+router.get('/newsearch', (req, res) => {
 	const { username, userId, loggedIn } = req.session
 	res.render('places/new', { username, loggedIn })
 })
 
 // create -> POST route that actually calls the db and makes a new document
-router.post('/', (req, res) => {
-	req.body.ready = req.body.ready === 'on' ? true : false
+// embeds the location search and redirects to places/:location
+router.post('/location', (req, res) => {
+	// req.body.ready = req.body.ready === 'on' ? true : false
 
-	req.body.owner = req.session.userId
-	Place.create(req.body)
-		.then(place => {
-			console.log('this was returned from create', place)
-			res.redirect('/places')
-		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
+	// req.body.owner = req.session.userId
+	const location = req.body.zip
+	console.log('this is the location', location)
+	res.redirect(`/places/${location}`)
 })
 
 // edit route -> GET that takes us to the edit form view
-router.get('/:id/edit', (req, res) => {
-	// we need to get the id
-	const placeId = req.params.id
-	Place.findById(placeId)
-		.then(place => {
-			res.render('places/edit', { place })
-		})
-		.catch((error) => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
+// router.get('/:id/edit', (req, res) => {
+// 	// we need to get the id
+// 	const placeId = req.params.id
+// 	Place.findById(placeId)
+// 		.then(place => {
+// 			res.render('places/edit', { place })
+// 		})
+// 		.catch((error) => {
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
 
 // update route
-router.put('/:id', (req, res) => {
-	const placeId = req.params.id
-	req.body.ready = req.body.ready === 'on' ? true : false
+// router.put('/:id', (req, res) => {
+// 	const placeId = req.params.id
+// 	req.body.ready = req.body.ready === 'on' ? true : false
 
-	Place.findByIdAndUpdate(placeId, req.body, { new: true })
-		.then(place => {
-			res.redirect(`/places/${place.id}`)
-		})
-		.catch((error) => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
+// 	Place.findByIdAndUpdate(placeId, req.body, { new: true })
+// 		.then(place => {
+// 			res.redirect(`/places/${place.id}`)
+// 		})
+// 		.catch((error) => {
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
 
 // show route
-router.get('/:id', (req, res) => {
-	const placeId = req.params.id
-	Place.findById(placeId)
-		.then(place => {
-            const {username, loggedIn, userId} = req.session
-			res.render('places/show', { place, username, loggedIn, userId })
-		})
-		.catch((error) => {
-			res.redirect(`/error?error=${error}`)
-		})
+// displays the location air quality data
+router.get('/:location', (req, res) => {
+	const location = req.params.location
+	console.log('this is the location', location)
+	
+	fetch(
+        `https://api.weatherapi.com/v1/current.json?key=68678de3a6f948dab14210014221403&q=${location}&aqi=yes&alerts=yes`
+    )
+    .then((response) => response.json())
+    .then((data) => {
+        console.log('this is the air data', data)
+        const locAir = data
+        
+        res.render('places/show', { locAir })
+       
+        console.log(data)
+    })
+	.catch((error) => {
+		res.redirect(`/error?error=${error}`)
+	})
 })
 
 // delete route
