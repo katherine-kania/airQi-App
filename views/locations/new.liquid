@@ -3,23 +3,22 @@
 
 {% block content %}
 <div class="container-sm">
-    <form action="/places/location" method="POST">
+    <form action="/locations/location" method="POST">
         <legend>I would like to see the air quality in</legend>
         <fieldset>
             <!-- <label class="form-label">Title: </label> -->
             <input 
                 type="text" 
-                name="location" 
-                placeholder="enter your city"
+                name="city" 
+                placeholder="enter city"
                 class="form-control"
             >
-            <!-- <label class="form-label">I'm interested in</label>
             <input 
-                type="checkbox" 
-                name="body" 
-                placeholder="enter place body" 
+                type="text" 
+                name="state" 
+                placeholder="enter state"
                 class="form-control"
-            >     -->
+            >
         </fieldset>
         <input type="submit" value="Search" class="btn btn-success">
     </form>

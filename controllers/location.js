@@ -1,7 +1,7 @@
 // Import Dependencies
 const express = require('express')
-const Place = require('../models/place')
 const axios = require('axios')
+const Location = require('../models/location')
 
 // Create router
 const router = express.Router()
@@ -23,27 +23,27 @@ router.use((req, res, next) => {
 // Routes
 
 // index ALL
-router.get('/', (req, res) => {
-	Place.find({})
-		.then(places => {
-			const username = req.session.username
-			const loggedIn = req.session.loggedIn
+// router.get('/', (req, res) => {
+// 	Location.find({})
+// 		.then(locations => {
+// 			const username = req.session.username
+// 			const loggedIn = req.session.loggedIn
 			
-			res.render('places/index', { places, username, loggedIn })
-		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
+// 			res.render('locations/index', { locations, username, loggedIn })
+// 		})
+// 		.catch(error => {
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
 
-// index that shows only the user's places
+// index that shows only the user's locations
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
-	console.log('this is the place saved', location)
-	Place.find({ owner: userId })
+	console.log('this is the location saved', location)
+	Location.find({ owner: userId })
 		.then(location => {
-			res.render('places/mine', { location, username, loggedIn })
+			res.render('locations/mine', { location, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -51,29 +51,35 @@ router.get('/mine', (req, res) => {
 })
 
 // new route -> GET route that renders our page with the form
-router.get('/newsearch', (req, res) => {
+router.get('/new', (req, res) => {
 	const { username, userId, loggedIn } = req.session
-	res.render('places/new', { username, loggedIn })
+	res.render('locations/new', { username, loggedIn, userId })
 })
 
 // create -> POST route that actually calls the db and makes a new document
-// embeds the location search and redirects to places/:location
+// embeds the location search and redirects to locations/:location
 router.post('/location', (req, res) => {
 	req.body.ready = req.body.ready === 'on' ? true : false
-
 	req.body.owner = req.session.userId
-	const location = req.body.location
-	// console.log('this is the location', location)
-	res.redirect(`/places/${location}`)
+	Location.create(req.body)
+		.then((location) => {
+			const locationId = req.body.city 
+			console.log('this is the location', location)
+			res.redirect(`/locations/${locationId}`)
+		})
+		.catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+
 })
 
 // edit route -> GET that takes us to the edit form view
 // router.get('/:id/edit', (req, res) => {
 // 	// we need to get the id
-// 	const placeId = req.params.id
-// 	Place.findById(placeId)
-// 		.then(place => {
-// 			res.render('places/edit', { place })
+// 	const locationId = req.params.id
+// 	Location.findById(locationId)
+// 		.then(location => {
+// 			res.render('locations/edit', { location })
 // 		})
 // 		.catch((error) => {
 // 			res.redirect(`/error?error=${error}`)
@@ -82,12 +88,12 @@ router.post('/location', (req, res) => {
 
 // update route
 // router.put('/:id', (req, res) => {
-// 	const placeId = req.params.id
+// 	const locationId = req.params.id
 // 	req.body.ready = req.body.ready === 'on' ? true : false
 
-// 	Place.findByIdAndUpdate(placeId, req.body, { new: true })
-// 		.then(place => {
-// 			res.redirect(`/places/${place.id}`)
+// 	Location.findByIdAndUpdate(locationId, req.body, { new: true })
+// 		.then(location => {
+// 			res.redirect(`/locations/${location.id}`)
 // 		})
 // 		.catch((error) => {
 // 			res.redirect(`/error?error=${error}`)
@@ -96,21 +102,19 @@ router.post('/location', (req, res) => {
 
 // show route
 // displays the location air quality data
-router.get('/:location', (req, res) => {
-	const location = req.params.location
-	// console.log('this is the location', req.params.location)
-	
+router.get('/:id', (req, res) => {
+	const location = req.params.id
 	axios.get(
         `https://api.weatherapi.com/v1/current.json?key=68678de3a6f948dab14210014221403&q=${location}&aqi=yes&alerts=yes`
     )
-    // .then((response) => response.json())
+
     .then((data) => {
-        // console.log('this is the air data', data)
+		const {username, loggedIn, userId} = req.session
 		const air = data
-        res.render('places/show', { air })
-       
+        res.render('locations/show', { air, username, loggedIn, userId })
         console.log('this is the data', air)
     })
+
 	.catch((error) => {
 		res.redirect(`/error?error=${error}`)
 	})
@@ -118,10 +122,10 @@ router.get('/:location', (req, res) => {
 
 // delete route
 router.delete('/:id', (req, res) => {
-	const placeId = req.params.id
-	Place.findByIdAndRemove(placeId)
-		.then(place => {
-			res.redirect('/places')
+	const locationId = req.params.id
+	Location.findByIdAndRemove(locationId)
+		.then(location => {
+			res.redirect('/locations')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)

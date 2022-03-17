@@ -1,30 +1,30 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-sm">
-    <form action="/places" method="POST">
+    <form action="/locations" method="POST">
         <fieldset>
-            <legend>Create New Place</legend>
+            <legend>Create New Location</legend>
             <label class="form-label">Title: </label>
             <input 
                 type="text" 
                 name="title" 
-                placeholder="{{ place.title }}"
-                value="{{ place.title }}"
+                placeholder="{{ location.title }}"
+                value="{{ location.title }}"
                 class="form-control"
             >
             <label class="form-label">Body:</label>
             <input 
                 type="text" 
                 name="body" 
-                placeholder="{{ place.body }}" 
-                value="{{ place.body }}" 
+                placeholder="{{ location.body }}" 
+                value="{{ location.body }}" 
                 class="form-control"
             >
             <label class="form-label">Amount:</label>
             <input 
                 type="number" 
                 name="amount"
-                value="{{ place.amount }}"
+                value="{{ location.amount }}"
                 class="form-control"
             >
             <label class="form-label">Ready:</label>
@@ -32,12 +32,12 @@
                 type="checkbox" 
                 name="ready" 
                 class="form-check-input"
-                {% if place.ready %}
+                {% if location.ready %}
                     checked
                 {% endif %}
             >
         </fieldset>
-        <input type="submit" value="Edit Place" class="btn btn-success">
+        <input type="submit" value="Edit Location" class="btn btn-success">
     </form>
 </div>
 {% endblock %}

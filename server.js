@@ -4,7 +4,7 @@
 require("dotenv").config() // make env variables available
 const express = require("express")
 const middleware = require('./utils/middleware')
-const PlaceRouter = require('./controllers/place')
+const LocationRouter = require('./controllers/location')
 const UserRouter = require('./controllers/user')
 const User = require("./models/user")
 
@@ -23,7 +23,7 @@ middleware(app)
 ////////////////////
 
 app.use('/auth', UserRouter)
-app.use('/places', PlaceRouter)
+app.use('/locations', LocationRouter)
 
 app.get('/', (req, res) => {
     const { username, userId, loggedIn } = req.session
