@@ -1,22 +1,21 @@
 {% block content %}
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a href="/" class="navbar-brand">airQI</a>
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid ">
+        <a href="/" class="navbar-brand text-primary text-opacity-25 nav-text-lg "><strong>airQI</strong></a>
         {% if loggedIn %}
-        <a href="/places/mine" class="nav-link text-light">Hello {{ username }} </a>
+        <a href="/" class="nav-link text-dark nav-text-md">Hello {{ username }} </a>
         {% endif %}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             {% if loggedIn %}
-                <a href="/locations" class="nav-link text-light">View All</a>
-                <a href="/locations/new" class="nav-link text-light">New</a>
-                <a href="/locations/mine" class="nav-link text-light">My Locations</a>
-                <a href="/auth/logout" class="nav-link text-light">Log Out</a>
+                <a href="/locations/new" class="nav-link text-dark nav-text-md">New Search</a>
+                <a href="/mylocations" class="nav-link text-dark nav-text-md">My Locations</a>
+                <a href="/auth/logout" class="nav-link text-dark nav-text-md">Log Out</a>
             {% else %}
-                <a href="/auth/signup" class="nav-link text-light">Sign Up</a>
-                <a href="/auth/login" class="nav-link text-light">Sign In</a>
+                <a href="/auth/signup" class="nav-link text-dark nav-text-md">Sign Up</a>
+                <a href="/auth/login" class="nav-link text-dark nav-text-md">Sign In</a>
             {% endif %}
         </div>
     </div>

@@ -51,6 +51,19 @@ router.get('/', (req, res) => {
 		})
 })
 
+// delete route
+router.delete('/:id', (req, res) => {
+	const locationId = req.params.id
+	Location.findByIdAndRemove(locationId)
+		.then(location => {
+			console.log('this is the response from location', location)
+			res.redirect('/')
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
 
 // Export the Router
 module.exports = router

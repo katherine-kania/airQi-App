@@ -1,13 +1,24 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<div class="container-md">
+
     <div>
         <h2>All my saved locations</h2>
     </div>
-    {% for location in locations %}
-    <p>
-      {{ location.search}}
-    </p>
-  {% endfor %}
-</div>
+    <div >
+      {% for location in locations %}
+     <h3>
+      {{ location.search }}
+     </h3>
+      <a href="/locations/{{ location.search }}" class="btn btn-info">
+        current conditions
+      </a>
+      {% if location.owner == userId  %}
+        <form action="/locations/{{ location.index0 }}?_method=DELETE" method="POST">
+              <input type="submit" value="DELETE" class="btn btn-danger">
+        </form>
+      {% endif %}
+    </div>
+      {% endfor %}
+
+
 {% endblock %}

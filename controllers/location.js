@@ -21,37 +21,11 @@ router.use((req, res, next) => {
 })
 
 // Routes
-
-
-// router.post('/mine', (req, res) => {
-// 	req.body.ready = req.body.ready === 'on' ? true : false
-// 	req.body.owner = req.session.userId
-// 	const { username, userId, loggedIn } = req.session
-// 	Location.create(req.body)
-// 		.then(location => {
-// 			console.log('this is the req.body', req.body)
-// 			// res.render('locations/mine', { location, username, loggedIn })
-// 			res.redirect('/locations/mylocations')
-// 		})
-// 		.catch((error) => {
-// 			res.redirect(`/error?error=${error}`)
-// 		})
-// })
-
-// // index that shows only the user's locations
-// router.get('/mylocations', (req, res) => {
-//     // destructure user info from req.session
-// 	const location = req.params.id
-//     const { username, userId, loggedIn } = req.session
-// 	console.log('this is the location saved', location)
-// 	Location.find({ owner: userId })
-// 		.then(locations => {
-// 			res.render('locations/mine', { locations, username, loggedIn })
-// 		})
-// 		.catch(error => {
-// 			res.redirect(`/error?error=${error}`)
-// 		})
-// })
+// new route -> GET route that renders our page with the form
+router.get('/', (req, res) => {
+	const { username, userId, loggedIn } = req.session
+	res.render('locations/index', { username, loggedIn, userId })
+})
 
 // new route -> GET route that renders our page with the form
 router.get('/new', (req, res) => {

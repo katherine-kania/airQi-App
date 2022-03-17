@@ -1,0 +1,36 @@
+.logo{
+    color: teal-500;
+}
+
+.nav-text-lg{
+    font-size: 3em;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.nav-text-md{
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+body{
+    background-color: aliceblue;
+    font-family: 'Poppins', sans-serif;
+}
+
+img {
+    opacity: 0.5;
+}
+
+.line{
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(205, 205, 205));
+    height: 2px;
+}
+
+.con-pad{
+    padding: 5em;
+}
+
+.button{
+    border: 1px solid black;
+    margin: 20px;
+
+}

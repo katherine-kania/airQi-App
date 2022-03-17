@@ -2,7 +2,7 @@
 {% render './navbar.liquid', loggedIn: loggedIn, username: username, userId: userId %}
 
 {% block content %}
-<div class="container-sm">
+<div class="container-sm text-center con-pad">
     <form action="/locations/location" method="POST">
         <legend>I would like to see the air quality in</legend>
         <fieldset>
@@ -11,7 +11,7 @@
                 type="text" 
                 name="search" 
                 placeholder="enter zipcode or city, region"
-                class="form-control"
+                class="form-control form-control-lg text-center"
             >
             <!-- <input 
                 type="text" 
@@ -29,7 +29,7 @@
             class="form-control"
             > -->
         </fieldset>
-        <input type="submit" value="Search" class="btn btn-success">
+        <input type="submit" value="Search" class="btn btn-light button">
     </form>
 </div>
 {% endblock %}
