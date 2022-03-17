@@ -5,7 +5,9 @@
         <h2>All my saved locations</h2>
     </div>
     {% for location in locations %}
-    {{ location.search}}
+    <p>
+      {{ location.search}}
+    </p>
   {% endfor %}
 </div>
 {% endblock %}
