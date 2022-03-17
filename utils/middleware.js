@@ -8,6 +8,7 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const LocationRouter = require('../controllers/location')
+const MyLocationRouter = require('../controllers/mylocation')
 
 /////////////////////////////////
 // Middleware function
