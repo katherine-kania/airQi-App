@@ -36,9 +36,23 @@ router.use((req, res, next) => {
 // 		})
 // })
 
+
+router.post('/mine', (req, res) => {
+	req.body.ready = req.body.ready === 'on' ? true : false
+	req.body.owner = req.session.userId
+	Location.create(req.body)
+		.then(location => {
+			res.render('locations/mine', { location, username, loggedIn })
+		})
+		.catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
 // index that shows only the user's locations
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
+	const location = req.params.id
     const { username, userId, loggedIn } = req.session
 	console.log('this is the location saved', location)
 	Location.find({ owner: userId })
@@ -63,47 +77,21 @@ router.post('/location', (req, res) => {
 	req.body.owner = req.session.userId
 	Location.create(req.body)
 		.then((location) => {
-			const locationId = req.body.city 
+			const locationId = req.body.city + ' ' + req.body.region
 			console.log('this is the location', location)
 			res.redirect(`/locations/${locationId}`)
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
 		})
-
 })
 
-// edit route -> GET that takes us to the edit form view
-// router.get('/:id/edit', (req, res) => {
-// 	// we need to get the id
-// 	const locationId = req.params.id
-// 	Location.findById(locationId)
-// 		.then(location => {
-// 			res.render('locations/edit', { location })
-// 		})
-// 		.catch((error) => {
-// 			res.redirect(`/error?error=${error}`)
-// 		})
-// })
-
-// update route
-// router.put('/:id', (req, res) => {
-// 	const locationId = req.params.id
-// 	req.body.ready = req.body.ready === 'on' ? true : false
-
-// 	Location.findByIdAndUpdate(locationId, req.body, { new: true })
-// 		.then(location => {
-// 			res.redirect(`/locations/${location.id}`)
-// 		})
-// 		.catch((error) => {
-// 			res.redirect(`/error?error=${error}`)
-// 		})
-// })
 
 // show route
 // displays the location air quality data
 router.get('/:id', (req, res) => {
 	const location = req.params.id
+
 	axios.get(
         `https://api.weatherapi.com/v1/current.json?key=68678de3a6f948dab14210014221403&q=${location}&aqi=yes&alerts=yes`
     )
@@ -120,17 +108,6 @@ router.get('/:id', (req, res) => {
 	})
 })
 
-// delete route
-router.delete('/:id', (req, res) => {
-	const locationId = req.params.id
-	Location.findByIdAndRemove(locationId)
-		.then(location => {
-			res.redirect('/locations')
-		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
 
 // Export the Router
 module.exports = router

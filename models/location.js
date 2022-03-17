@@ -13,7 +13,7 @@ const LocationSchema = new Schema(
 			type: String, 
 			required: true
 		},
-		state: { 
+		region: { 
 			type: String, 
 			required: true
 		},

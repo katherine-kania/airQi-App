@@ -82,7 +82,15 @@
             </ul>
         </div>
     </article>
-    <form action="/locations/mine" method="POST">
+    <form action="/locations/mine" method="PUT">
+        <input 
+            type="hidden" 
+            name="{{air.data.location.name}}" 
+        >
+        <input 
+            type="hidden" 
+            name="{{air.data.location.name}}" 
+        >
         <input type="submit" value="Add {{air.data.location.name}} to My Locations" class="btn btn-success">
     </form>    
 
