@@ -9,13 +9,24 @@ const { Schema, model } = mongoose
 
 const LocationSchema = new Schema(
 	{
-		city: { 
-			type: String, 
-			required: true
-		},
-		region: { 
-			type: String, 
-			required: true
+		search: { 
+			type: [
+				String,
+				Number
+			], 
+			if: {
+				type: Number
+			},
+			then: {
+				type: Number,
+				minimum: 5,
+				maximum: 5,
+				required: true
+			},
+			else: {
+				type: String,
+				required: true
+			}
 		},
 		owner: {
 			type: Schema.Types.ObjectID,

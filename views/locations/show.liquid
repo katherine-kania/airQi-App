@@ -5,7 +5,13 @@
     <article>
         <h3>The air quality in 
             <strong>
-                {{ air.data.location.name}}, {{ air.data.location.region}}
+                {{ air.data.location.name}}, 
+                    {% if air.data.location.region == empty %}
+                    {{ air.data.location.country}} 
+                {% else %}
+                    {{ air.data.location.region}} 
+                {% endif %}
+
             </strong> is
         </h3>
         <div>
@@ -82,11 +88,7 @@
             </ul>
         </div>
     </article>
-    <form action="/locations/mine" method="PUT">
-        <input 
-            type="hidden" 
-            name="{{air.data.location.name}}" 
-        >
+    <form action="/locations/mine" method="POST">
         <input 
             type="hidden" 
             name="{{air.data.location.name}}" 

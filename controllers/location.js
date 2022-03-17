@@ -40,6 +40,7 @@ router.use((req, res, next) => {
 router.post('/mine', (req, res) => {
 	req.body.ready = req.body.ready === 'on' ? true : false
 	req.body.owner = req.session.userId
+	const { username, userId, loggedIn } = req.session
 	Location.create(req.body)
 		.then(location => {
 			res.render('locations/mine', { location, username, loggedIn })
@@ -77,7 +78,8 @@ router.post('/location', (req, res) => {
 	req.body.owner = req.session.userId
 	Location.create(req.body)
 		.then((location) => {
-			const locationId = req.body.city + ' ' + req.body.region
+
+			const locationId = req.body.search
 			console.log('this is the location', location)
 			res.redirect(`/locations/${locationId}`)
 		})
