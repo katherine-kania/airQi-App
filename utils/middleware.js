@@ -9,6 +9,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const LocationRouter = require('../controllers/location')
 const MyLocationRouter = require('../controllers/mylocation')
+const ProfileRouter = require('../controllers/profile')
 
 /////////////////////////////////
 // Middleware function

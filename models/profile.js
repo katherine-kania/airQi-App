@@ -1,13 +1,15 @@
 // import what I need
 const { Schema, model } = require('./connection.js')
 
+// import user model for populate
+const User = require('./user')
+
 // create the schema
 const ProfileSchema = new Schema(
 	{
 		owner: { 
-			type: mongoose.Schema.Types.ObjectID,
+			type: Schema.Types.ObjectID,
             ref: 'User',
-            unique: true
 		},
 		email: { 
 			type: String, 
