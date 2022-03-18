@@ -88,7 +88,7 @@
             </ul>
         </div>
     </article>
-    <form action="/mylocations" method="POST">
+    <form action="/localDayData" method="POST">
         <input 
             type="text"
             hidden 
@@ -105,8 +105,19 @@
             pm2_5="{{ air.data.current.air_quality.pm2_5 }}"
             pm10="{{ air.data.current.air_quality.pm10 }}"
         >
+        <input type="submit" value="Add today's data to my Air Journal" class="btn btn-light button">
+    </form>
+    <form action="/mylocations" method="POST">
+        <input 
+            type="text"
+            hidden 
+            date="{{ air.data.current.last_updated }}" 
+            name="{{ air.data.location.name }}"
+            region="{{ air.data.location.region }}"
+            country="{{ air.data.location.country }}"
+        >
         <input type="submit" value="Add {{air.data.location.name}} to My Locations" class="btn btn-light button">
-    </form>    
+    </form>      
 
 
     <div class="">
