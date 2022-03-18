@@ -1,6 +1,6 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<div class="container-md">
+<div class="container-sm con-pad">
     
     <article>
         <h3>The air quality in 
@@ -14,57 +14,57 @@
 
             </strong> is
         </h3>
-        <div>
+        <div >
             {% if air.data.current.air_quality.us-epa-index == 1 %}
-                <h4 style="color: rgb(154, 249, 12)">
+                <h4 style="background-color: rgb(154, 249, 12)">
                     Good
                 </h4>
-                <div style="color: rgb(121, 198, 5")> 
+                <div style="background-color: rgb(154, 249, 12)")> 
                     Air quality is satisfactory, and air pollution poses little or no risk.
                 </div>
             {% endif %}
 
             {% if air.data.current.air_quality.us-epa-index == 2 %}
-                <h4 style="color: yellow">
+                <h4 style="background-color: yellow">
                     Moderate
                 </h4>
-                <div style="color: rgb(220, 220, 22)">
+                <div style="background-color: yellow" >
                     Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution.
                 </div>
             {% endif %}
 
             {% if air.data.current.air_quality.us-epa-index == 3 %}
-                <h4 style="color: orange">
+                <h4 style="background-color: orange">
                     Unhealthy for Sensitive Groups
                 </h4>
-                <div style="color: rgb(206, 135, 2)">
+                <div style="background-color: orange">
                     Members of sensitive groups may experience health effects. The general public is less likely to be affected.
                 </div>
             {% endif %}
 
             {% if air.data.current.air_quality.us-epa-index == 4 %}
-            <h4 style="color: red">
+            <h4 style="background-color: red">
                 Unhealthy
             </h4>
-            <div style="color: rgb(172, 2, 2)">
+            <div style="background-color: red)">
                 Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects.
             </div>
             {% endif %}
 
             {% if air.data.current.air_quality.us-epa-index == 5 %}
-            <h4 style="color: purple">
+            <h4 style="background-color: purple">
                 Veary Unhealthy
             </h4>
-            <div style="color: rgb(96, 2, 96)">
+            <div style="background-color: purple">
                 Health alert: The risk of health effects is increased for everyone.
             </div>
             {% endif %}
 
             {% if air.data.current.air_quality.us-epa-index == 5 %}
-            <h4 style="color: maroon">
+            <h4 style="background-color: maroon">
                 Veary Unhealthy
             </h4>
-            <div style="color: rgb(63, 1, 1)">
+            <div style="background-color: maroon">
                 Health warning of emergency conditions: everyone is more likely to be affected.
             </div>
             {% endif %}
@@ -94,12 +94,12 @@
             hidden 
             name="{{air.data.location.name}}" 
         >
-        <input type="submit" value="Add {{air.data.location.name}} to My Locations" class="btn btn-success">
+        <input type="submit" value="Add {{air.data.location.name}} to My Locations" class="btn btn-light button">
     </form>    
 
 
     <div class="">
-        <a href="/locations/new" class="btn btn-success">Start a New Search</a>
+        <a href="/locations/new" class="btn btn-light button">Start a New Search</a>
     </div>   
    
 </div>

@@ -1,19 +1,19 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 
-<div class="container-sm text-center con-pad">
+<div class="container-sm con-pad">
     <h3>
         <strong>
-            Join us to stay concious of our air IQ.
+            Join us to find out more about the air around you.
         </strong>
     </h3>
     <form action="/auth/signup" method="POST">
         <fieldset>
-            <legend>Easy to sign up:</legend>
+            <legend>Let's start by creating a new account:</legend>
             <label class="form-label">Username: </label>
-            <input type="text" name="username" placeholder="username" class="form-control form-control-lg text-center" required>
+            <input type="text" name="username" placeholder="username" class="form-control form-control-lg" required>
             <label class="form-label">Password</label>
-            <input type="password" name="password" placeholder="enter password" class="form-control form-control-lg text-center" required>
+            <input type="password" name="password" placeholder="enter password" class="form-control form-control-lg" required>
         </fieldset>
         <input type="submit" value="Create Account" class="btn btn-light button">
     </form>

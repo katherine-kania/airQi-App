@@ -1,21 +1,13 @@
 {% layout 'layout.liquid'%}
 {% block content %}
-<div>
-    <div>
-        <h1>
-            <strong>airQI</strong> </br>
-        </h1>
-        <h4>
-            How would you like to start?
-        </h4>
-    </div>
-    <div class="row">
+    <div class="container-sm text-center con-pad">
+        <h3>
+            <strong>
+                How should we start?
+            </strong>
+        </h3>
+    <a href="/locations/newsearch" class="btn btn-light button">New Search</a>
+    <a href="/locations/mine" class="btn btn-light button">My locations</a>
        
-        <div class="">
-            <a href="/locations/newsearch" class="btn btn-success">New Search</a>
-            <a href="/locations/mine" class="btn btn-success">My locations</a>
-        </div>    
-    
     </div>
-</div>
 {% endblock %}

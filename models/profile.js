@@ -11,11 +11,19 @@ const ProfileSchema = new Schema(
 			type: Schema.Types.ObjectID,
             ref: 'User',
 		},
+        firstName: { 
+			type: String, 
+            required: true
+		},
+        lastName: { 
+			type: String, 
+            required: true
+		},
 		email: { 
 			type: String, 
 			required: true 
 		},
-        ciy: {
+        city: {
             type: String,
             required: true
         },

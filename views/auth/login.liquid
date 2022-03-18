@@ -1,19 +1,19 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 
-<div class="container-sm text-center con-pad">
+<div class="container-sm con-pad">
     <h3>
         <strong>
-            Let's check that air quality in your neighborhood.
+            Let's check that air quality in your neighborhood today.
         </strong>
     </h3>
     <form action="/auth/login" method="POST">
         <fieldset>
             <legend>Please log in to continue</legend>
             <label class="form-label">Username: </label>
-            <input type="text" name="username" placeholder="username" class="form-control form-control-lg text-center" required>
+            <input type="text" name="username" placeholder="username" class="form-control form-control-lg" required>
             <label class="form-label">Password</label>
-            <input type="password" name="password" placeholder="enter password" class="form-control form-control-lg text-center" required>
+            <input type="password" name="password" placeholder="enter password" class="form-control form-control-lg" required>
         </fieldset>
         <input type="submit" value="Log In" class="btn btn-light button">
     </form>

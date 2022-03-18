@@ -1,0 +1,26 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+
+<div class="container-sm text-center con-pad">
+    <h3>
+        <strong>
+            Customize your profile.
+        </strong>
+    </h3>
+    <form action="/profile/create" method="POST">
+        <fieldset>
+            <legend>Create a new account:</legend>
+            
+            <input type="text" name="firstName" placeholder="First name" class="form-control form-control-lg " required>
+            <input type="text" name="lastName" placeholder="Last name" class="form-control form-control-lg" required>
+            <input type="email" name="email" placeholder="email" class="form-control form-control-lg " required>
+            <input type="text" name="city" placeholder="city" class="form-control form-control-lg " required>
+            <input type="text" name="state" placeholder="state" class="form-control form-control-lg " required>
+            <input type="date" name="dateOfBirth" placeholder="Birthdate" class="form-control form-control-lg " required>
+            <input type="text" name="concerns" placeholder="concerns" class="form-control form-control-lg " required>
+        </fieldset>
+        <input type="submit" value="Create profile" class="btn btn-light button">
+    </form>
+</div>
+
+{% endblock %}
