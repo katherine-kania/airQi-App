@@ -1,7 +1,7 @@
 // Import Dependencies
 const express = require('express')
 const axios = require('axios')
-const Location = require('../models/location')
+const LocaleDayData = require('../models/localeDayData')
 
 // Create router
 const router = express.Router()
@@ -21,6 +21,35 @@ router.use((req, res, next) => {
 })
 
 
+router.post('/', (req, res) => {
+	req.body.ready = req.body.ready === 'on' ? true : false
+	req.body.owner = req.session.userId
+	const { username, userId, loggedIn } = req.session
+	LocaleDayData.create(req.body)
+		.then(localeDayData => {
+			console.log('this is the location', localeDayData)
+			res.redirect('/localeDayData')
+		})
+		.catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+// index that shows only the user's locations
+router.get('/', (req, res) => {
+    // destructure user info from req.session
+	// const location = req.params.id
+    const { username, userId, loggedIn } = req.session
+	LocaleDayData.find({})
+		.then(localeDayDatas => {
+
+			console.log('this is the location saved', localeDayDatas)
+			res.render('localeDayData/index', { localeDayDatas, username, loggedIn, userId })
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
 
 
 // Export the Router

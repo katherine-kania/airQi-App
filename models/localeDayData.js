@@ -1,8 +1,12 @@
 // import what I need
-const { Schema, model } = require('./connection.js')
+const mongoose = require('./connection')
 
 // import user model for populate
-const localeDayData = require('./user')
+const User = require('./user')
+const Location = require('./location')
+
+// destructure the schema and model constructors from mongoose
+const { Schema, model } = mongoose
 
 // create the schema
 const LocaleDayDataSchema = new Schema(
@@ -11,13 +15,13 @@ const LocaleDayDataSchema = new Schema(
 			type: Date
         },
         name: {
-            type, String
+            type: String
         },
         region: {
-            type, String
+            type: String
         },
         country: {
-            type, String
+            type: String
         },
         usEpaIndex: { 
 			type: Number 
@@ -43,6 +47,10 @@ const LocaleDayDataSchema = new Schema(
 		location: {
 			type: Schema.Types.ObjectID,
 			ref: 'Location',
+		},
+		owner: {
+			type: Schema.Types.ObjectID,
+			ref: 'User',
 		}
 	},
 	{ timestamps: true }

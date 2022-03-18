@@ -21,17 +21,16 @@ router.use((req, res, next) => {
 })
 
 
-router.post('/', (req, res) => {
-	req.body.ready = req.body.ready === 'on' ? true : false
-	req.body.owner = req.session.userId
-	const { username, userId, loggedIn } = req.session
-	Location.create(req.body)
+// index that shows only the user's examples
+router.get('/', (req, res) => {
+    // destructure user info from req.session
+    const { username, userId, loggedIn } = req.session
+	Location.find({ owner: userId })
 		.then(location => {
-			console.log('this is the req.body', req.body)
-			// res.render('locations/mine', { location, username, loggedIn })
-			res.redirect('/mylocations')
+			console.log('these are the locations', location)
+			res.render('examples/index', { location, username, loggedIn })
 		})
-		.catch((error) => {
+		.catch(error => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
@@ -39,11 +38,13 @@ router.post('/', (req, res) => {
 // index that shows only the user's locations
 router.get('/', (req, res) => {
     // destructure user info from req.session
-	const location = req.params.id
-    const { username, userId, loggedIn } = req.session
-	console.log('this is the location saved', location)
-	Location.find({ owner: userId })
+	// const location = req.params.id
+    // const { username, userId, loggedIn } = req.session
+	Location.find({})
 		.then(locations => {
+			const username = req.session.username
+			const loggedIn = req.session.loggedIn
+			console.log('this is the location saved', location)
 			res.render('mylocations/index', { locations, username, loggedIn })
 		})
 		.catch(error => {

@@ -11,6 +11,9 @@ const MyLocationRouter = require('./controllers/mylocation')
 const LocaleDayDataRouter = require('./controllers/localeDayData')
 
 const User = require("./models/user")
+const Profile = require("./models/profile")
+const Location = require("./models/profile")
+const LocaleDayData= require("./models/localeDayData")
 
 
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
