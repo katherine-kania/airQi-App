@@ -92,8 +92,18 @@
         <input 
             type="text"
             hidden 
-            name="{{air.data.location.name}}" 
-            value="{{air.data.location.name}}" 
+            date="{{ air.data.current.last_updated }}" 
+            name="{{ air.data.location.name }}"
+            region="{{ air.data.location.region }}"
+            country="{{ air.data.location.country }}"
+            usEpaIndex="{{ air.data.current.air_quality.us-epa-index }}"
+            co="{{ air.data.current.air_quality.co }}"
+            no2="{{ air.data.current.air_quality.no2 }}"
+            o3="{{ air.data.current.air_quality.o3 }}"
+            so2="{{ air.data.current.air_quality.o3 }}"
+            o3="{{ air.data.current.air_quality.so2 }}"
+            pm2_5="{{ air.data.current.air_quality.pm2_5 }}"
+            pm10="{{ air.data.current.air_quality.pm10 }}"
         >
         <input type="submit" value="Add {{air.data.location.name}} to My Locations" class="btn btn-light button">
     </form>    
