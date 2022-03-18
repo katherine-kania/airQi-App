@@ -1,0 +1,16 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+<div class="container-sm con-pad">
+    <article>
+        <h3>
+            {{ username }}'s Profile
+        </h3>
+        {{ profiles.firstName }} {{ profiles.firstLast }}
+    </article>
+
+    <a href="/profile/create" class="btn btn-primary">Begin My Profile</a>
+    <a href="/profile/edit" class="btn btn-primary">Edit My Profile</a>
+
+   
+</div>
+{% endblock %}

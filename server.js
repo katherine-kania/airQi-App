@@ -8,6 +8,8 @@ const UserRouter = require('./controllers/user')
 const ProfileRouter = require('./controllers/profile')
 const LocationRouter = require('./controllers/location')
 const MyLocationRouter = require('./controllers/mylocation')
+const LocaleDayDataRouter = require('./controllers/localeDayData')
+
 const User = require("./models/user")
 
 
@@ -29,18 +31,9 @@ app.use('/auth', UserRouter)
 app.use('/profile', ProfileRouter)
 app.use('/locations', LocationRouter)
 app.use('/mylocations', MyLocationRouter)
+app.use('/localeDayData', LocaleDayDataRouter)
 
 
-app.use((req, res, next) => {
-	// checking the loggedIn boolean of our session
-	if (req.session.loggedIn) {
-		// if they're logged in, go to locations(thats the controller)
-		res.redirect('/locations')
-	} else {
-		// if they're not logged in, send them to the login page
-		res.redirect('/auth/login')
-	}
-})
 
 app.get('/', (req, res) => {
 	const { username, userId, loggedIn } = req.session

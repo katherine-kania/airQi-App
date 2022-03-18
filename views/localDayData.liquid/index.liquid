@@ -1,0 +1,25 @@
+{% layout 'layout.liquid'%}
+{% block content %}
+<div >
+    <h2 class="display-6">Daily Data Saves</h2>
+    <div class="row">
+        {% for localeDayData in localDayDatas %}
+            <div class="card" style="width: 18rem;">
+            
+                <h5 class="card-header">{{localDayData.name}}</h5>
+                <div class="card-body">
+                    <h5 class="card-title">
+                       
+                    </h5>
+                    <p class="card-text"> 
+                        
+                    </p>
+                    <a href="/location/{{ location.id }}" class="btn btn-info">
+                        View {{ localDayData.name }}
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
