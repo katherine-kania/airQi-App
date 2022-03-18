@@ -89,22 +89,18 @@
         </div>
     </article>
     <form action="/localeDayData" method="POST">
-        <input 
-            type="text"
-            hidden 
-            date="{{ air.data.current.last_updated }}" 
-            name="{{ air.data.location.name }}"
-            region="{{ air.data.location.region }}"
-            country="{{ air.data.location.country }}"
-            usEpaIndex="{{ air.data.current.air_quality.us-epa-index }}"
-            co="{{ air.data.current.air_quality.co }}"
-            no2="{{ air.data.current.air_quality.no2 }}"
-            o3="{{ air.data.current.air_quality.o3 }}"
-            so2="{{ air.data.current.air_quality.o3 }}"
-            o3="{{ air.data.current.air_quality.so2 }}"
-            pm2_5="{{ air.data.current.air_quality.pm2_5 }}"
-            pm10="{{ air.data.current.air_quality.pm10 }}"
-        >
+        
+        <input type="hidden" name="name" value="{{ air.data.location.name }}">
+        <input type="hidden" name="region" value="{{ air.data.location.region }}">
+        <input type="hidden" name="country" value="{{ air.data.location.country }}">
+        <input type="hidden" name="usEpaIndex" value="{{ air.data.current.air_quality.us-epa-index }}">
+        <input type="hidden" name="co" value="{{ air.data.current.air_quality.co }}">
+        <input type="hidden" name="no2" value="{{ air.data.current.air_quality.no2 }}">
+        <input type="hidden" name="o3" value="{{ air.data.current.air_quality.o3 }}">
+        <input type="hidden" name="so2" value="{{ air.data.current.air_quality.so2 }}">
+        <input type="hidden" name="pm2_5" value="{{ air.data.current.air_quality.pm2_5 }}">
+        <input type="hidden" name="pm10" value="{{ air.data.current.air_quality.pm10 }}">
+  
         <input type="submit" value="Add today's data to my Air Journal" class="btn btn-light button">
     </form>
     <form action="/mylocations" method="POST">
@@ -121,7 +117,7 @@
 
 
     <div class="">
-        <a href="/locations/new" class="btn btn-light button">Start a New Search</a>
+        <a href="/location/new" class="btn btn-light button">Start a New Search</a>
     </div>   
    
 </div>

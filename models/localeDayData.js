@@ -11,10 +11,7 @@ const { Schema, model } = mongoose
 // create the schema
 const LocaleDayDataSchema = new Schema(
 	{
-		date: { 
-			type: Date
-        },
-        name: {
+	    name: {
             type: String
         },
         region: {

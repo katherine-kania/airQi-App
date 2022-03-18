@@ -1,16 +1,16 @@
 {% block content %}
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid ">
-        <a href="/locations" class="navbar-brand text-primary text-opacity-25 nav-text-lg "><strong>airQI</strong></a>
+        <a href="/location" class="navbar-brand text-primary text-opacity-25 nav-text-lg "><strong>airQI</strong></a>
         {% if loggedIn %}
-        <a href="/locations" class="nav-link text-dark nav-text-md">Hello {{ username }} </a>
+        <a href="/location" class="nav-link text-dark nav-text-md">Hello {{ username }} </a>
         {% endif %}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             {% if loggedIn %}
-                <a href="/locations/new" class="nav-link text-dark nav-text-md">New Search</a>
+                <a href="/location/new" class="nav-link text-dark nav-text-md">New Search</a>
                 <a href="/localeDayData" class="nav-link text-dark nav-text-md">Daily Air Journal</a>
                 <a href="/mylocations" class="nav-link text-dark nav-text-md">My Locations</a>
                 <a href="/profile" class="nav-link text-dark nav-text-md">My Profile</a>

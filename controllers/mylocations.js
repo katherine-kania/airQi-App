@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 	Location.find({ owner: userId })
 		.then(location => {
 			console.log('these are the locations', location)
-			res.render('examples/index', { location, username, loggedIn })
+			res.render('mylocations/index', { location, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)

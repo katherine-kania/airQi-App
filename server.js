@@ -7,12 +7,12 @@ const middleware = require('./utils/middleware')
 const UserRouter = require('./controllers/user')
 const ProfileRouter = require('./controllers/profile')
 const LocationRouter = require('./controllers/location')
-const MyLocationRouter = require('./controllers/mylocation')
+const MylocationsRouter = require('./controllers/mylocations')
 const LocaleDayDataRouter = require('./controllers/localeDayData')
 
 const User = require("./models/user")
 const Profile = require("./models/profile")
-const Location = require("./models/profile")
+const Location = require("./models/location")
 const LocaleDayData= require("./models/localeDayData")
 
 
@@ -32,8 +32,8 @@ middleware(app)
 
 app.use('/auth', UserRouter)
 app.use('/profile', ProfileRouter)
-app.use('/locations', LocationRouter)
-app.use('/mylocations', MyLocationRouter)
+app.use('/location', LocationRouter)
+app.use('/mylocations', MylocationsRouter)
 app.use('/localeDayData', LocaleDayDataRouter)
 
 

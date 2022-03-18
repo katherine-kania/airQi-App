@@ -24,13 +24,13 @@ router.use((req, res, next) => {
 // new route -> GET route that renders our page with the form
 router.get('/', (req, res) => {
 	const { username, userId, loggedIn } = req.session
-	res.render('locations/index', { username, loggedIn, userId })
+	res.render('location/index', { username, loggedIn, userId })
 })
 
 // new route -> GET route that renders our page with the form
 router.get('/new', (req, res) => {
 	const { username, userId, loggedIn } = req.session
-	res.render('locations/new', { username, loggedIn, userId })
+	res.render('location/new', { username, loggedIn, userId })
 })
 
 // create -> POST route that actually calls the db and makes a new document
@@ -44,7 +44,7 @@ router.post('/location', (req, res) => {
 	.then((location) => {
 		const locationId = req.body.search
 		console.log('this is the location', location)
-		res.redirect(`/locations/${locationId}`)
+		res.redirect(`/location/${locationId}`)
 	})
 	.catch((error) => {
 		res.redirect(`/error?error=${error}`)
@@ -62,15 +62,15 @@ router.get('/:id', (req, res) => {
     .then((data) => {
 		const {username, loggedIn, userId} = req.session
 		const air = data
-        res.render('locations/show', { air, username, loggedIn, userId })
+        res.render('location/show', { air, username, loggedIn, userId })
         // console.log('this is the data', air)
+
     })
 
 	.catch((error) => {
 		res.redirect(`/error?error=${error}`)
 	})
 })
-
 
 // Export the Router
 module.exports = router
