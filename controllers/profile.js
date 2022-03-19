@@ -23,12 +23,12 @@ router.use((req, res, next) => {
 // Routes
 //index
 router.get('/', (req, res) => {
-	Example.find({})
-		.then(examples => {
+	Profile.find({})
+		.then(profiles => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
 			
-			res.render('examples/index', { examples, username, loggedIn })
+			res.render('profile/index', { profiles, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -48,11 +48,25 @@ router.post('/profile', (req, res) => {
     .then((profile) => {
         const profileId = req.body.profile
         console.log('this is the req.body', profile)
-        res.redirect(`/${profileId}`)
+        res.redirect('/profile')
     })
     .catch((error) => {
         res.redirect(`/error?error=${error}`)
     })
+})
+
+// update route
+router.put('/:id', (req, res) => {
+	const profileId = req.params.id
+	req.body.ready = req.body.ready === 'on' ? true : false
+
+	Example.findByIdAndUpdate(profileId, req.body, { new: true })
+		.then(profile => {
+			res.redirect(`/profile/${profile.id}`)
+		})
+		.catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
 })
 
 // index ALL
