@@ -21,44 +21,45 @@ router.use((req, res, next) => {
 })
 
 
-// index that shows only the user's examples
+// index that shows only the user's saved daily data
 router.get('/', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
-	Location.find({ owner: userId })
-		.then(location => {
-			console.log('these are the locations', location)
-			res.render('mylocations/index', { location, username, loggedIn })
-		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
+    Location.find({})
+        .then((locations) => {
+            const username = req.session.username
+            const loggedIn = req.session.loggedIn
+            const userId = req.session.userId
+            console.log('this is the locations saved', locations)
+            res.render('mylocations/index', { locations, username, loggedIn, userId })
+        })
+        .catch(error => {
+            res.redirect(`/error?error=${error}`)
+        })
 })
 
-// index that shows only the user's locations
-router.get('/', (req, res) => {
-    // destructure user info from req.session
-	// const location = req.params.id
-    // const { username, userId, loggedIn } = req.session
-	Location.find({})
-		.then(locations => {
-			const username = req.session.username
-			const loggedIn = req.session.loggedIn
-			console.log('this is the location saved', location)
-			res.render('mylocations/index', { locations, username, loggedIn })
-		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
+// Posts daily data 
+router.post('/', (req, res) => {
+    req.body.ready = req.body.ready === 'on' ? true : false
+	req.body.owner = req.session.userId
+	
+    Location.create(req.body)
+        .then((location) => {
+        
+        console.log('this is the loccation', location)
+        res.redirect('/mylocations')
+        })
+        .catch((error) => {
+            res.redirect(`/error?error=${error}`)
+        })
 })
 
 // delete route
 router.delete('/:id', (req, res) => {
-	const locationId = req.params.id
-	Location.findByIdAndRemove(locationId)
+	const location = req.params.id
+	Location.findByIdAndRemove(location)
 		.then(location => {
-			console.log('this is the response from location', location)
-			res.redirect('/')
+			res.redirect('/mylocations')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)

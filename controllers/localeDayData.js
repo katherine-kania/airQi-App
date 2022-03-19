@@ -20,12 +20,7 @@ router.use((req, res, next) => {
 	}
 })
 
-// router.get('/', (req, res) => {
-// 	const { username, userId, loggedIn } = req.session
-// 	res.render('localeDayData/index', { username, loggedIn, userId })
-// })
-
-// index that shows only the user's locations
+// index that shows only the user's saved daily data
 router.get('/', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
@@ -42,6 +37,7 @@ router.get('/', (req, res) => {
         })
 })
 
+// Posts daily data 
 router.post('/', (req, res) => {
     req.body.ready = req.body.ready === 'on' ? true : false
 	req.body.owner = req.session.userId
@@ -57,6 +53,30 @@ router.post('/', (req, res) => {
         })
 })
 
+// show route
+router.get('/:id', (req, res) => {
+	const localeDayDataId = req.params.id
+	LocaleDayData.findById(localeDayDataId)
+		.then(localeDayData => {
+            const {username, loggedIn, userId} = req.session
+			res.render('localeDayData/show', { localeDayData, username, loggedIn, userId })
+		})
+		.catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+// delete route
+router.delete('/:id', (req, res) => {
+	const localeDayData = req.params.id
+	LocaleDayData.findByIdAndRemove(localeDayData)
+		.then(dayData => {
+			res.redirect('/localeDayData')
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
 
 
 // Export the Router

@@ -5,17 +5,17 @@
     <article>
         <h3>The air quality in 
             <strong>
-                {{ air.data.location.name}}, 
-                    {% if air.data.location.region == empty %}
-                    {{ air.data.location.country}} 
+                {{ localeDayData.name}}, 
+                    {% if localeDayData.region == empty %}
+                    {{ localeDayData.country}} 
                 {% else %}
-                    {{ air.data.location.region}} 
+                    {{ localeDayData.region}} 
                 {% endif %}
 
             </strong> is
         </h3>
         <div >
-            {% if air.data.current.air_quality.us-epa-index == 1 %}
+            {% if localeDayData.usEpaIndex == 1 %}
                 <h4 style="background-color: rgb(154, 249, 12)">
                     Good
                 </h4>
@@ -24,7 +24,7 @@
                 </div>
             {% endif %}
 
-            {% if air.data.current.air_quality.us-epa-index == 2 %}
+            {% if localeDayData.usEpaIndex == 2 %}
                 <h4 style="background-color: yellow">
                     Moderate
                 </h4>
@@ -33,7 +33,7 @@
                 </div>
             {% endif %}
 
-            {% if air.data.current.air_quality.us-epa-index == 3 %}
+            {% if localeDayData.usEpaIndex == 3 %}
                 <h4 style="background-color: orange">
                     Unhealthy for Sensitive Groups
                 </h4>
@@ -42,7 +42,7 @@
                 </div>
             {% endif %}
 
-            {% if air.data.current.air_quality.us-epa-index == 4 %}
+            {% if localeDayData.usEpaIndex == 4 %}
             <h4 style="background-color: red">
                 Unhealthy
             </h4>
@@ -51,7 +51,7 @@
             </div>
             {% endif %}
 
-            {% if air.data.current.air_quality.us-epa-index == 5 %}
+            {% if localeDayData.usEpaIndex == 5 %}
             <h4 style="background-color: purple">
                 Veary Unhealthy
             </h4>
@@ -60,7 +60,7 @@
             </div>
             {% endif %}
 
-            {% if air.data.current.air_quality.us-epa-index == 5 %}
+            {% if localeDayData.usEpaIndex == 5 %}
             <h4 style="background-color: maroon">
                 Very Unhealthy
             </h4>
@@ -71,20 +71,20 @@
             
         </div>
         <div>
-            Last Updated On: {{ air.data.current.last_updated}}</br>
-            Local Time: {{ air.data.location.localtime}}
+            Last Updated On: {{ localeDayData.last_updated}}</br>
+            Local Time: {{ localeDayData.localtime}}
         </div>
         <div>
             Factors:
             <ul>
-                <li>Carbon Monoxide (μg/m3): {{ air.data.current.air_quality.co | round}}</li>
-                <li>Ozone (μg/m3): {{ air.data.current.air_quality.o3 | round}}</li>
-                <li>Nitrogen dioxide (μg/m3): {{ air.data.current.air_quality.no2 | round}}</li>
-                <li>Sulphur dioxide (μg/m3): {{ air.data.current.air_quality.so2 | round}}</li>
-                <li>PM2.5 (μg/m3): {{ air.data.current.air_quality.pm2_5 | round}}</li>
-                <li>PM10 (μg/m3): {{ air.data.current.air_quality.pm10 | round}}</li>
-                <li>US EPA standard: {{ air.data.current.air_quality.us-epa-index}}</li>
-                <li>UK Defra Index: {{ air.data.current.air_quality.gb-defra-index}}</li>
+                <li>Carbon Monoxide (μg/m3): {{ localeDayData.co | round}}</li>
+                <li>Ozone (μg/m3): {{ localeDayData.o3 | round}}</li>
+                <li>Nitrogen dioxide (μg/m3): {{ localeDayData.no2 | round}}</li>
+                <li>Sulphur dioxide (μg/m3): {{ localeDayData.so2 | round}}</li>
+                <li>PM2.5 (μg/m3): {{ localeDayData.pm2_5 | round}}</li>
+                <li>PM10 (μg/m3): {{ localeDayData.pm10 | round}}</li>
+                <li>US EPA standard: {{ localeDayData.usEpaIndex }}</li>
+                
             </ul>
         </div>
     </article>
@@ -103,16 +103,22 @@
   
         <input type="submit" value="Add today's data to my Air Journal" class="btn btn-light button">
     </form>
-
     <form action="/mylocations" method="POST">
-        <input type="hidden" name="search" value="{{ location.search}}">
-        <input type="hidden" name="name" value="{{ air.data.location.name }}">
+        <input 
+            type="text"
+            hidden 
+            date="{{ air.data.current.last_updated }}" 
+            name="{{ air.data.location.name }}"
+            region="{{ air.data.location.region }}"
+            country="{{ air.data.location.country }}"
+        >
         <input type="submit" value="Add {{air.data.location.name}} to My Locations" class="btn btn-light button">
-    </form>    
+    </form>      
+
 
     <div class="">
         <a href="/location/new" class="btn btn-light button">Start a New Search</a>
     </div>   
-   
+    
 </div>
 {% endblock %}

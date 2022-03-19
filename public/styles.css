@@ -26,7 +26,7 @@ img {
 }
 
 .con-pad{
-    padding: 5em;
+    padding: 3em;
 }
 
 .button{
@@ -53,3 +53,7 @@ ul {
     background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(205, 205, 205));
     height: 50px;
   }
+
+  h5 {
+    display: inline;
+}
