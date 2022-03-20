@@ -41,7 +41,7 @@ router.get('/create', (req, res) => {
     res.render('profile/new', { username, loggedIn, userId })
 })
 
-router.post('/profile', (req, res) => {
+router.post('/', (req, res) => {
     req.body.ready = req.body.ready === 'on' ? true : false
 	req.body.owner = req.session.userId
 	Profile.create(req.body)
@@ -55,19 +55,19 @@ router.post('/profile', (req, res) => {
     })
 })
 
-// update route
-router.put('/:id', (req, res) => {
-	const profileId = req.params.id
-	req.body.ready = req.body.ready === 'on' ? true : false
+// // update route
+// router.put('/:id', (req, res) => {
+// 	const profileId = req.params.id
+// 	req.body.ready = req.body.ready === 'on' ? true : false
 
-	Example.findByIdAndUpdate(profileId, req.body, { new: true })
-		.then(profile => {
-			res.redirect(`/profile/${profile.id}`)
-		})
-		.catch((error) => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
+// 	Example.findByIdAndUpdate(profileId, req.body, { new: true })
+// 		.then(profile => {
+// 			res.redirect(`/profile/${profile.id}`)
+// 		})
+// 		.catch((error) => {
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
 
 // index ALL
 router.get('/:id', (req, res) => {

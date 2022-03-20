@@ -2,12 +2,13 @@
 {% block content %}
 <div class="container-sm con-pad">
     <article>
+        {% for profile in profiles %}
         <h3>
             {{ username }}'s Profile
         </h3>
-        {{ profiles.firstName }} {{ profiles.firstLast }}
+        {{ profile.firstName }} {{ profile.firstLast }}
     </article>
-
+    {% endfor %}
     <a href="/profile/create" class="btn btn-primary">Begin My Profile</a>
     <a href="/profile/edit" class="btn btn-primary">Edit My Profile</a>
 
