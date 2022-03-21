@@ -13,6 +13,7 @@
 }
 body{
     background-color: aliceblue;
+    background-image: url("img/img1.jpeg");
     font-family: 'Poppins', sans-serif;
 }
 
@@ -33,6 +34,7 @@ img {
 .button{
     border: 2px solid black;
     margin: 10px;
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(228, 228, 228));
 }
 
 ul {

@@ -54,7 +54,7 @@ router.post('/', (req, res) => {
         })
 })
 
-// delete route
+// delete route - delete a daily save
 router.delete('/:id', (req, res) => {
 	const location = req.params.id
 	Location.findByIdAndRemove(location)

@@ -4,8 +4,9 @@
   <div class="container-sm con-pad">
     <h2 class="display-6">All my saved locations</h2>
     <div class="row">
-      {% for location in locations %}
-      <h5 class="card-header row" >
+      {% assign sorted_location = locations | sort:"name" %}
+      {% for location in sorted_location %}
+      <h5 class="card" style="width: 12rem;">
         <a href="/location/{{ location.search }}" class="link-info nav-text-md">{{ location.search }}</a>
         {% if location.owner == userId  %}
         <form action="/mylocations/{{ location.id }}?_method=DELETE" method="POST">

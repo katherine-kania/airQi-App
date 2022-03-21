@@ -28,6 +28,7 @@ router.get('/create', (req, res) => {
     res.render('profile/new', { username, loggedIn, userId })
 })
 
+// create -> POST route 
 router.post('/', (req, res) => {
     req.body.ready = req.body.ready === 'on' ? true : false
 	req.body.owner = req.session.userId
@@ -42,7 +43,7 @@ router.post('/', (req, res) => {
     })
 })
 
-//index
+//index route - Shows the profile information
 router.get('/', (req, res) => {
     const { username, userId, loggedIn } = req.session
     Profile.find({owner: userId})
