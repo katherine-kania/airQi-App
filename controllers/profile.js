@@ -44,11 +44,9 @@ router.post('/', (req, res) => {
 
 //index
 router.get('/', (req, res) => {
-    Profile.find({})
+    const { username, userId, loggedIn } = req.session
+    Profile.find({owner: userId})
         .then(profiles => {
-            const username = req.session.username
-            const loggedIn = req.session.loggedIn
-            
             res.render('profile/index', { profiles, username, loggedIn })
         })
         .catch(error => {
