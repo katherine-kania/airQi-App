@@ -9,11 +9,13 @@ const ProfileRouter = require('./controllers/profile')
 const LocationRouter = require('./controllers/location')
 const MylocationsRouter = require('./controllers/mylocations')
 const LocaleDayDataRouter = require('./controllers/localeDayData')
+const CommentRouter = require('./controllers/comment')
 
 const User = require("./models/user")
 const Profile = require("./models/profile")
 const Location = require("./models/location")
 const LocaleDayData= require("./models/localeDayData")
+const Comment = require("./models/comment")
 
 
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
@@ -35,6 +37,7 @@ app.use('/profile', ProfileRouter)
 app.use('/location', LocationRouter)
 app.use('/mylocations', MylocationsRouter)
 app.use('/localeDayData', LocaleDayDataRouter)
+app.use('/comment', CommentRouter)
 
 
 
