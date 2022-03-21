@@ -1,22 +1,42 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-sm con-pad">
-    <article>
+    <div class="row">
         {% for profile in profiles limit:1 %}
        
-        <h3>
+        <h2 class="display-6">
             {{ username }}'s Profile
-        </h3>
-        Name: {{ profile.firstName }} {{ profile.lastName }}</br>
-        Email: {{ profile.email }} </br>
-        City: {{ profile.city }} </br>
-        State: {{ profile.state }} </br>
-        Date of Birth: {{ profile.dateOfBirth }} </br>
-        Concerns: {{ profile.concerns }} </br>
+        </h2>
+        <h5 class="card con-pad">
+            <strong>
+                 Name:
+            </strong>
+            {{ profile.firstName }} {{ profile.lastName }}</br>
+            <strong>
+                Email: 
+            </strong>
+            {{ profile.email }} </br>
+            <strong>
+                City: 
+            </strong>
+            {{ profile.city }} </br>
+            <strong>
+                State: 
+            </strong>
+            {{ profile.state }} </br>
+            <strong>
+                Date of Birth: 
+            </strong>
+            {{ profile.dateOfBirth | date: "%a, %b %d, %y"}} </br>
+            <strong>
+                Concerns: 
+            </strong>
+            {{ profile.concerns }} </br>
+        </h5>
     </article>
-    <a href="/profile/{{profile.id}}/edit" class="btn btn-primary">Edit My Profile</a>
+    <a href="/profile/{{profile.id}}/edit" class="btn btn-light button">Edit My Profile</a>
     {% endfor %}
-    <a href="/profile/create" class="btn btn-primary" id="createButton" onclick="getElementById('createButton').style.display = 'block'">Begin My Profile</a>
+    
     
    
 </div>

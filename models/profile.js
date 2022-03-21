@@ -10,6 +10,7 @@ const ProfileSchema = new Schema(
 		owner: { 
 			type: Schema.Types.ObjectID,
             ref: 'User',
+            unique: true,
 		},
         firstName: { 
 			type: String, 
@@ -21,7 +22,8 @@ const ProfileSchema = new Schema(
 		},
 		email: { 
 			type: String, 
-			required: true 
+			required: true,
+            unique: true 
 		},
         city: {
             type: String,

@@ -21,19 +21,6 @@ router.use((req, res, next) => {
 })
 
 // Routes
-//index
-router.get('/', (req, res) => {
-	Profile.find({})
-		.then(profiles => {
-			const username = req.session.username
-			const loggedIn = req.session.loggedIn
-			
-			res.render('profile/index', { profiles, username, loggedIn })
-		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
 
 // GET to render the signup form
 router.get('/create', (req, res) => {
@@ -44,7 +31,7 @@ router.get('/create', (req, res) => {
 router.post('/', (req, res) => {
     req.body.ready = req.body.ready === 'on' ? true : false
 	req.body.owner = req.session.userId
-	Profile.findOne(req.body)
+	Profile.create(req.body)
     .then((profile) => {
         const profileId = req.body.profile
         console.log('this is the req.body', profile)
@@ -55,6 +42,19 @@ router.post('/', (req, res) => {
     })
 })
 
+//index
+router.get('/', (req, res) => {
+    Profile.find({})
+        .then(profiles => {
+            const username = req.session.username
+            const loggedIn = req.session.loggedIn
+            
+            res.render('profile/index', { profiles, username, loggedIn })
+        })
+        .catch(error => {
+            res.redirect(`/error?error=${error}`)
+        })
+})
 
 // edit route -> GET that takes us to the edit form view
 router.get('/:id/edit', (req, res) => {

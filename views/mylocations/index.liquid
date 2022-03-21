@@ -2,17 +2,18 @@
 {% block content %}
 
   <div class="container-sm con-pad">
-    <h2>All my saved locations</h2>
-    <div>
+    <h2 class="display-6">All my saved locations</h2>
+    <div class="row">
       {% for location in locations %}
-      {{ location.search }} </br>
-      <a href="/location/{{ location.search }}" class="btn btn-light button">View Current</a>
-      {% if location.owner == userId  %}
-      <form action="/mylocations/{{ location.id }}?_method=DELETE" method="POST">
+      <h5 class="card-header row" >
+        <a href="/location/{{ location.search }}" class="link-info nav-text-md">{{ location.search }}</a>
+        {% if location.owner == userId  %}
+        <form action="/mylocations/{{ location.id }}?_method=DELETE" method="POST">
         <input type="submit" value="DELETE" class="btn btn-light button">
-      </form>
-      {% endif %}
-      {% endfor %}
+        </form>
+        {% endif %}
+        {% endfor %}
+      </h5>
     </div>
   </div>
 
