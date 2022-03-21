@@ -34,7 +34,7 @@ router.post('/:localeDayDataid', (req, res) => {
             return localeDayData.save()
         })
         .then(localeDayData => {
-            res.redirect(`/localDayData/${localeDayData.id}`)
+            res.redirect(`/localeDayData/${localeDayData.id}`)
         })
         .catch(error => {
             console.log(error)

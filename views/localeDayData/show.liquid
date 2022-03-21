@@ -71,11 +71,19 @@
             
         </div>
         <div>
-            Last Updated On: {{ localeDayData.last_updated}}</br>
-            Local Time: {{ localeDayData.localtime}}
+            <strong>
+                Day Created On: 
+            </strong>
+            <ul>
+                <li>
+                    {{ localeDayData.createdAt  | date: "%m-%d-%Y %H:%M"   }}
+                </li>
+            </ul>
         </div>
         <div>
-            Factors:
+            <strong>
+                Factors:
+            </strong>
             <ul>
                 <li>Carbon Monoxide (μg/m3): {{ localeDayData.co | round}}</li>
                 <li>Ozone (μg/m3): {{ localeDayData.o3 | round}}</li>
@@ -89,14 +97,13 @@
         </div>
     </article>
     
-    <div class="col-md-6">
+    <div class="col-md-6 ">
         <form action="/comment/{{localeDayData.id}}" method="POST">
             <fieldset>
-                <legend>Add Comment</legend>
-                <label class="form-label">Comment: </label>
+                <h5 class="form-label">Add Notes: </h5>
                 <input type="text" class="form-control" name="note" placeholder="enter comment here...">
             </fieldset>
-            <input type="submit" class="btn btn-success" value="Add Comment">
+            <input type="submit" class="btn btn-light button" value="Add Note">
         </form>
     </div>
 
@@ -115,7 +122,7 @@
 
 
     <div class="">
-        <a href="/location/new" class="btn btn-light button">Start a New Search</a>
+        <a href="/localeDayData" class="btn btn-light button">Back to Journal</a>
     </div>   
     
 </div>
