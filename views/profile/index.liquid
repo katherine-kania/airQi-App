@@ -2,16 +2,22 @@
 {% block content %}
 <div class="container-sm con-pad">
     <article>
-        {% for profile in profiles %}
+        {% for profile in profiles limit:1 %}
+       
         <h3>
             {{ username }}'s Profile
         </h3>
-        {{ profile.firstName }} {{ profile.firstLast }}
+        Name: {{ profile.firstName }} {{ profile.lastName }}</br>
+        Email: {{ profile.email }} </br>
+        City: {{ profile.city }} </br>
+        State: {{ profile.state }} </br>
+        Date of Birth: {{ profile.dateOfBirth }} </br>
+        Concerns: {{ profile.concerns }} </br>
     </article>
+    <a href="/profile/{{profile.id}}/edit" class="btn btn-primary">Edit My Profile</a>
     {% endfor %}
-    <a href="/profile/create" class="btn btn-primary">Begin My Profile</a>
-    <a href="/profile/edit" class="btn btn-primary">Edit My Profile</a>
-
+    <a href="/profile/create" class="btn btn-primary" id="createButton" onclick="getElementById('createButton').style.display = 'block'">Begin My Profile</a>
+    
    
 </div>
 {% endblock %}

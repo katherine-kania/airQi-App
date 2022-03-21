@@ -44,7 +44,7 @@ router.get('/create', (req, res) => {
 router.post('/', (req, res) => {
     req.body.ready = req.body.ready === 'on' ? true : false
 	req.body.owner = req.session.userId
-	Profile.create(req.body)
+	Profile.findOne(req.body)
     .then((profile) => {
         const profileId = req.body.profile
         console.log('this is the req.body', profile)
@@ -55,32 +55,45 @@ router.post('/', (req, res) => {
     })
 })
 
-// // update route
-// router.put('/:id', (req, res) => {
-// 	const profileId = req.params.id
-// 	req.body.ready = req.body.ready === 'on' ? true : false
 
-// 	Example.findByIdAndUpdate(profileId, req.body, { new: true })
-// 		.then(profile => {
-// 			res.redirect(`/profile/${profile.id}`)
-// 		})
-// 		.catch((error) => {
-// 			res.redirect(`/error?error=${error}`)
-// 		})
-// })
+// edit route -> GET that takes us to the edit form view
+router.get('/:id/edit', (req, res) => {
+	// we need to get the id
+	const profileId = req.params.id
+	Profile.findById(profileId)
+		.then(profile => {
+			res.render('profile/edit', { profile })
+		})
+		.catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
 
-// index ALL
+// update route
+router.put('/:id', (req, res) => {
+	const profileId = req.params.id
+	req.body.ready = req.body.ready === 'on' ? true : false
+
+	Profile.findByIdAndUpdate(profileId, req.body, { new: true })
+		.then(profile => {
+			res.redirect('/profile')
+		})
+		.catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+// show route
 router.get('/:id', (req, res) => {
-    
-    Profile.find({ owner: userId })
-        .then((profile) => {
+	const profileId = req.params.id
+	Profile.findById(profileId)
+		.then(profile => {
             const {username, loggedIn, userId} = req.session
-            console.log(profile)
-            res.render('profile/index', { profile, username, loggedIn, userId })
-        })
-        .catch(error => {
-            res.redirect(`/error?error=${error}`)
-        })
+			res.render('profile/show', { profile, username, loggedIn, userId })
+		})
+		.catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
 })
 
 

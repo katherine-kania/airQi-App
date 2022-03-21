@@ -1,0 +1,68 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+
+<div class="container-sm text-center con-pad">
+    <h3>
+        <strong>
+            Edit your profile.
+        </strong>
+    </h3>
+    <form action="/profile/{{ profile.id }}/?_method=PUT" method="POST">
+        <fieldset>
+            <legend>Create a new account:</legend>
+            
+            <input 
+                type="text" 
+                name="firstName" 
+                placeholder="First name" 
+                class="form-control form-control-lg " 
+                value="{{ profile.firstName }}"
+            >
+            <input 
+                type="text" 
+                name="lastName" 
+                placeholder="Last name" 
+                class="form-control form-control-lg" 
+                value="{{ profile.lastName }}"
+            >
+            <input 
+                type="email" 
+                name="email" 
+                placeholder="email" 
+                class="form-control form-control-lg " 
+                value="{{ profile.email }}"
+            >
+            <input 
+                type="text" 
+                name="city" 
+                placeholder="city" 
+                class="form-control form-control-lg " 
+                value="{{ profile.city }}"
+            >
+            <input 
+                type="text" 
+                name="state" 
+                placeholder="state" 
+                class="form-control form-control-lg " 
+                value="{{ profile.state }}"
+            >
+            <input 
+                type="date" 
+                name="dateOfBirth" 
+                placeholder="Birthdate" 
+                class="form-control form-control-lg " 
+                value="{{ profile.dateOfBirth }}"
+            >
+            <input 
+                type="text" 
+                name="concerns" 
+                placeholder="concerns" 
+                class="form-control form-control-lg " 
+                value="{{ profile.concerns }}"
+            >
+        </fieldset>
+        <input type="submit" value="Update profile" class="btn btn-light button">
+    </form>
+</div>
+
+{% endblock %}
