@@ -31,9 +31,8 @@ img {
 }
 
 .button{
-    border: 1px solid black;
+    border: 2px solid black;
     margin: 10px;
-
 }
 
 ul {
@@ -52,7 +51,7 @@ ul {
     bottom: 0;
     width: 100%;
     background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(205, 205, 205));
-    height: 50px;
+    height: 70px;
   }
 
   h5 {
