@@ -36,7 +36,6 @@ const ProfileSchema = new Schema(
         dateOfBirth: { 
             type: Date,
             required: true,
-            trim: true
         },
         concerns: [String]
 	},
