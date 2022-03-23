@@ -57,6 +57,7 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
 	const localeDayDataId = req.params.id
 	LocaleDayData.findById(localeDayDataId)
+		.populate('comments.author')
 		.then(localeDayData => {
             const {username, loggedIn, userId} = req.session
 			res.render('localeDayData/show', { localeDayData, username, loggedIn, userId })

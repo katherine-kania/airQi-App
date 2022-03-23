@@ -4,7 +4,7 @@ const mongoose = require('./connection')
 // import user model for populate
 const User = require('./user')
 const Location = require('./location')
-const Comment = require('./comment')
+const commentSchema = require('./comment')
 
 // destructure the schema and model constructors from mongoose
 const { Schema, model } = mongoose
@@ -50,10 +50,7 @@ const LocaleDayDataSchema = new Schema(
 			type: Schema.Types.ObjectID,
 			ref: 'User',
 		},
-		comments: {
-			type: Schema.Types.ObjectID,
-			ref: 'Comment',
-		},
+		comments: [commentSchema],
 	},
 	{ timestamps: true }
 )

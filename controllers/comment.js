@@ -22,15 +22,16 @@ router.use((req, res, next) => {
 })
 
 // POST -> to create a comment
-router.post('/:localeDayDataid', (req, res) => {
+router.post('/:localeDayDataId', (req, res) => {
     const localeDayDataId = req.params.localeDayDataId
     console.log('first comment body', req.body)
 
     req.body.author = req.session.userId
-    console.log('updated comment body', req.body)
+    // console.log('updated comment body', req.body)
     LocaleDayData.findById(localeDayDataId)
         .then(localeDayData => {
             localeDayData.comments.push(req.body)
+            
             return localeDayData.save()
         })
         .then(localeDayData => {
@@ -64,7 +65,7 @@ router.delete('/delete/:localeDayDataId/:commId', (req, res) => {
         })
         .then(localeDayData => {
 
-            res.redirect(`/localeDayData/${localeDayDataId}`)
+            res.redirect(`/localeDayData/${localeDayData.id}`)
         })
         .catch(error => {
             // catch any errors

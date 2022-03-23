@@ -37,7 +37,7 @@ app.use('/profile', ProfileRouter)
 app.use('/location', LocationRouter)
 app.use('/mylocations', MylocationsRouter)
 app.use('/localeDayData', LocaleDayDataRouter)
-app.use('/comment', CommentRouter)
+app.use('/comments', CommentRouter)
 
 
 
