@@ -1,4 +1,4 @@
-# airQI
+# airQI App
 
 *SEI Project #2 / Full-stack Application*
 
