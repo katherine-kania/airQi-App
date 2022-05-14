@@ -2,7 +2,7 @@
 
 *SEI Project 2 / Full-stack Application*
 
-[Link to deployed game](https://airqijournal.herokuapp.com/)
+[Link to deployed AirQI App](https://airqijournal.herokuapp.com/)
 
 The airQI app is a tool for users to search the air quality in real time and save the air quality data to their journals. The user is able to add their own input/ notes whether from their own personal sensors or just notes and thoughts for each saved post. The user is able to create a porfile that and get access to their saved searches. 
 
