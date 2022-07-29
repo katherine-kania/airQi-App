@@ -4,7 +4,7 @@
   <div class="con-pad">
     <h2 class="display-6">My Saved Locations</h2>
     <div class="row">
-      {% assign sorted_location = locations | sort:"name" %}
+      {% assign sorted_location = locations | sort:"last" %}
       {% for location in sorted_location %}
       {% if location.owner == userId  %}
       <h5 class="saved_card" style="width: 12rem;">

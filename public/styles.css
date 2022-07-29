@@ -12,10 +12,12 @@
   margin-top: 20px;
 }
 body {
-  background-color: aliceblue;
-  background-image: url("img/img1.jpeg");
   font-family: "Poppins", sans-serif;
-}
+  background-color: aliceblue;
+    opacity: 0.95;
+    background-image:  linear-gradient(rgb(212, 227, 241) 1px, transparent 1px), linear-gradient(to right, rgb(212, 227, 241) 1px, transparent 1px);
+    background-size: 20px 20px;
+    }
 
 img {
   opacity: 0.5;
@@ -54,7 +56,7 @@ img {
   );
   margin-top: 10px;
   font-size: .7em;
-  padding: 5px;
+  padding: auto;
 }
 
 ul {
@@ -86,8 +88,9 @@ h5 {
 
 .saved_loc {
     font-size: 2vh;
-    color: salmon;
+    color: rgb(250, 101, 85);
     text-decoration: none;
+    font-weight: bold;
 }
 
 .saved_loc:visited {
@@ -95,11 +98,17 @@ h5 {
     text-decoration: none;
 }
 
+.saved_loc:hover, .saved_loc:active {
+    color: red;
+  }
+
 .saved_card {
     padding: 1em;
     margin: .5em;
     background-color: white;
-    border-radius: 10%;
+    border: 2px solid grey;
+    border-radius: 5px;
     height: 100px;
-    display: inline-block;
+    box-shadow: 5px 5px 10px rgb(247, 166, 157);
+
 }
