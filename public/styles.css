@@ -115,3 +115,14 @@ h5 {
   height: 100px;
   box-shadow: 3px 3px 10px grey;
 }
+.show_card {
+  padding: 1em;
+  margin-bottom: 30px;
+  background-color: white;
+  border: 2px solid grey;
+  border-radius: 5px;
+  height: 100%;
+  box-shadow: 3px 3px 10px grey;
+}
+
+
