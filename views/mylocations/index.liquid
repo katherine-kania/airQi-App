@@ -1,16 +1,16 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 
-  <div class="container-sm con-pad">
-    <h2 class="display-6">All my saved locations</h2>
+  <div class="con-pad">
+    <h2 class="display-6">My Saved Locations</h2>
     <div class="row">
       {% assign sorted_location = locations | sort:"name" %}
       {% for location in sorted_location %}
-      <h5 class="card" style="width: 12rem;">
-        <a href="/location/{{ location.search }}" class="link-info nav-text-md">{{ location.search }}</a>
-        {% if location.owner == userId  %}
+      {% if location.owner == userId  %}
+      <h5 class="saved_card" style="width: 12rem;">
+        <a href="/location/{{ location.search }}" class="saved_loc">{{ location.search }}</a>
         <form action="/mylocations/{{ location.id }}?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE" class="btn btn-light button">
+        <input type="submit" value="DELETE" class="btn button_del">
         </form>
         {% endif %}
         {% endfor %}

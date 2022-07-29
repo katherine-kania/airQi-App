@@ -1,61 +1,105 @@
-.logo{
-    color: teal-500;
+.logo {
+  color: teal-500;
 }
 
-.nav-text-lg{
-    font-size: 3em;
-    font-family: 'Fredoka', sans-serif;
+.nav-text-lg {
+  font-size: 3em;
+  font-family: "Fredoka", sans-serif;
 }
 
-.nav-text-md{
-    font-size: 1.2em;
-    margin-top: 20px;
+.nav-text-md {
+  font-size: 1.2em;
+  margin-top: 20px;
 }
-body{
-    background-color: aliceblue;
-    background-image: url("img/img1.jpeg");
-    font-family: 'Poppins', sans-serif;
+body {
+  background-color: aliceblue;
+  background-image: url("img/img1.jpeg");
+  font-family: "Poppins", sans-serif;
 }
 
 img {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
-.line{
-    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(205, 205, 205));
-    height: 2px;
+.line {
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0),
+    rgb(205, 205, 205)
+  );
+  height: 2px;
 }
 
-.con-pad{
-    padding: 3em;
-    line-height: 1.6;
+.con-pad {
+  padding: 3em;
+  line-height: 1.6;
 }
 
-.button{
-    border: 2px solid black;
-    margin: 10px;
-    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(228, 228, 228));
+.button {
+  border: 2px solid black;
+  margin: 10px;
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0),
+    rgb(228, 228, 228)
+  );
+}
+
+.button_del {
+  border: 1px solid black;
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0),
+    rgb(228, 228, 228)
+  );
+  margin-top: 10px;
+  font-size: .7em;
+  padding: 5px;
 }
 
 ul {
-    display: block;
-    list-style-type: none;
-    margin-top: 1em;
-    margin-bottom: 1 em;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 40px;
-  }
+  display: block;
+  list-style-type: none;
+  margin-top: 1em;
+  margin-bottom: 1 em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 40px;
+}
 
-  footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(205, 205, 205));
-    height: 70px;
-  }
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0),
+    rgb(205, 205, 205)
+  );
+  height: 70px;
+}
 
-  h5 {
-    display: inline;
+h5 {
+  display: inline;
+}
+
+.saved_loc {
+    font-size: 2vh;
+    color: salmon;
+    text-decoration: none;
+}
+
+.saved_loc:visited {
+    color: rgb(209, 157, 151);
+    text-decoration: none;
+}
+
+.saved_card {
+    padding: 1em;
+    margin: .5em;
+    background-color: white;
+    border-radius: 10%;
+    height: 100px;
+    display: inline-block;
 }
